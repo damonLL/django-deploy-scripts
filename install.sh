@@ -7,7 +7,7 @@ set -e
 
 # Configuration (can be overridden via environment variables)
 REPO_URL="${DEPLOY_REPO_URL:-https://github.com/user/repo.git}"
-BOOTSTRAP_URL="${DEPLOY_BOOTSTRAP_URL:-https://raw.githubusercontent.com/user/repo/main/deploy/bootstrap.sh}"
+BOOTSTRAP_URL="${DEPLOY_BOOTSTRAP_URL:-https://raw.githubusercontent.com/damonLL/django-deploy-scripts/main/bootstrap.sh}"
 TEMP_BOOTSTRAP="/tmp/app-install-$$"
 
 echo "One-Line Installer"
