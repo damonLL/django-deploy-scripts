@@ -142,11 +142,18 @@ main() {
     echo "  App Name: $APP_NAME"
     echo ""
     
-    read -p "Continue? (y/N): " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        log "Bootstrap cancelled"
-        exit 0
+    # Skip confirmation prompt if running non-interactively (piped from curl)
+    if [[ -t 0 ]]; then
+        # Interactive mode - ask for confirmation
+        read -p "Continue? (y/N): " -n 1 -r
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            log "Bootstrap cancelled"
+            exit 0
+        fi
+    else
+        # Non-interactive mode - proceed automatically
+        echo "Running in non-interactive mode, proceeding automatically..."
     fi
     
     log "Starting application bootstrap for $TARGET_ENV environment..."
